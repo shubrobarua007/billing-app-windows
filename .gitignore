@@ -1,0 +1,43 @@
+# macOS system files
+.DS_Store
+
+# Node modules
+node_modules/
+
+# Log files
+*.log
+
+# Environment files
+.env
+
+# Build output from Vite (React frontend)
+clientside/dist/
+
+# Electron-packager or builder output
+/dist/
+/out/
+/build/
+
+# VS Code config
+.vscode/
+
+# Backup files
+*.bak
+*.tmp
+*.swp
+
+# OS-specific trash
+*.Trash-*
+
+# npm debug logs
+npm-debug.log*
+
+# Installer files (e.g. NSIS, dmg, exe)
+*.dmg
+*.exe
+*.app
+*.deb
+*.rpm
+
+# Electron-builder cache
+electron-builder-cache/

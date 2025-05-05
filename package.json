@@ -1,0 +1,41 @@
+{
+  "name": "billingapp",
+  "version": "1.0.0",
+  "main": "main.js",
+  "scripts": {
+    "build-react": "cd clientside && npm run build",
+    "dist": "npm run build-react && electron-builder",
+    "start": "concurrently \"node serverside/test.js\" \"electron .\""
+  },
+  "build": {
+    "appId": "com.shubro.billingapp",
+    "productName": "BillingApp",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "main.js",
+      "clientside/dist/**/*",
+      "serverside/**/*",
+      ".env"
+    ],
+    "mac": {
+      "target": "dmg"
+    },
+    "win": {
+      "target": "nsis"
+    },
+    "linux": {
+      "target": "AppImage"
+    }
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2",
+    "electron": "^29.0.0",
+    "electron-builder": "^24.13.3",
+    "electron-packager": "^17.1.2"
+  },
+  "dependencies": {
+    "dotenv": "^16.5.0"
+  }
+}
