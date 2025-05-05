@@ -1,0 +1,39 @@
+name: Build Windows App
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Build React Frontend
+        run: |
+          cd clientside
+          npm install
+          npm run build
+          cd ..
+
+      - name: Package App for Windows
+        run: |
+          npm run dist
+          
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: windows-build
+          path: dist/
