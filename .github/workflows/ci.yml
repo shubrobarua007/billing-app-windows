@@ -1,0 +1,33 @@
+name: Build Electron App (Windows)
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build React frontend
+        run: npm run build-react
+
+      - name: Build Electron Windows App
+        run: npm run dist
+
+      - name: Upload Windows Build Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: BillingApp-Windows
+          path: dist/*.exe
