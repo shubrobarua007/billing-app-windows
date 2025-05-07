@@ -26,10 +26,9 @@ jobs:
       - name: Build Electron Windows App
         run: npm run dist
 
-  - name: Upload Build Artifacts
-  uses: actions/upload-artifact@v4
-  with:
-    name: BillingApp-Windows
-    path: dist/
-    include-hidden-files: true
-
+      - name: Upload Build Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: BillingApp-Windows
+          path: dist/
+          include-hidden-files: true
