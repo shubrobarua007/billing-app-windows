@@ -27,7 +27,7 @@ jobs:
         run: npm run dist
 
       - name: Upload Artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v2
         with:
           name: BillingApp-Windows
           path: dist/
