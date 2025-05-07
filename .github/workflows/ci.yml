@@ -9,10 +9,10 @@ jobs:
     runs-on: windows-latest
 
     steps:
-      - name: Checkout repo
+      - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Setup Node
+      - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 18
@@ -23,12 +23,11 @@ jobs:
       - name: Build React frontend
         run: npm run build-react
 
-      - name: Build Electron Windows App
+      - name: Package Electron App
         run: npm run dist
 
-      - name: Upload Build Artifacts
-        uses: actions/upload-artifact@v4
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v3
         with:
           name: BillingApp-Windows
           path: dist/
-          include-hidden-files: true
