@@ -26,9 +26,13 @@ jobs:
       - name: Package Electron App
         run: npm run dist
 
+      # Check if dist folder exists in clientside
+      - name: List contents of clientside/dist folder
+        run: dir clientside/dist
+
       - name: Upload Build Artifacts
         uses: actions/upload-artifact@v2
         with:
           name: BillingApp-Windows
-          path: dist/
+          path: clientside/dist/
           if-no-files-found: warn
