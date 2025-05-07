@@ -1,6 +1,8 @@
 {
   "name": "billingapp",
   "version": "1.0.0",
+  "description": "A simple desktop billing app for hardware shops",
+  "author": "Shubro Barua",
   "main": "main.js",
   "scripts": {
     "build-react": "cd clientside && npm run build",
@@ -32,7 +34,8 @@
   "devDependencies": {
     "concurrently": "^9.1.2",
     "electron": "^29.0.0",
-    "electron-builder": "^24.13.3"
+    "electron-builder": "^24.13.3",
+    "electron-packager": "^17.1.2"
   },
   "dependencies": {
     "dotenv": "^16.5.0"
