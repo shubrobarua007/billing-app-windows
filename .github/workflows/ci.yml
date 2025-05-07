@@ -1,4 +1,4 @@
-name: Build Windows Installer
+name: Build Electron App (Windows)
 
 on:
   push:
@@ -9,26 +9,30 @@ jobs:
     runs-on: windows-latest
 
     steps:
-      - name: Checkout Code
+      - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Set up Node
+      - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 18
 
-      - name: Install Dependencies
+      - name: Install root dependencies
         run: npm install
 
-      - name: Build React Frontend
+      - name: Install frontend dependencies
+        run: |
+          cd clientside
+          npm install
+
+      - name: Build React frontend
         run: npm run build-react
 
-      - name: Build Electron App
+      - name: Package Electron App
         run: npm run dist
 
-      - name: Upload Artifact
+      - name: Upload packaged app
         uses: actions/upload-artifact@v3
         with:
           name: BillingApp-Windows
           path: dist/
-          if-no-files-found: error
