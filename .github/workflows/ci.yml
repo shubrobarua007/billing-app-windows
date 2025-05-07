@@ -26,8 +26,9 @@ jobs:
       - name: Package Electron App
         run: npm run dist
 
-      - name: Upload Artifacts
+      - name: Upload Build Artifacts
         uses: actions/upload-artifact@v2
         with:
           name: BillingApp-Windows
           path: dist/
+          if-no-files-found: warn
