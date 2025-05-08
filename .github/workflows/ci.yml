@@ -9,7 +9,7 @@ jobs:
     runs-on: windows-latest
 
     steps:
-      - name: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v3
 
       - name: Setup Node.js
@@ -21,9 +21,7 @@ jobs:
         run: npm install
 
       - name: Install frontend dependencies
-        run: |
-          cd clientside
-          npm install
+        run: cd clientside && npm install
 
       - name: Build React frontend
         run: npm run build-react
@@ -31,8 +29,8 @@ jobs:
       - name: Package Electron App
         run: npm run dist
 
-      - name: Upload packaged app
-        uses: actions/upload-artifact@v3
+      - name: Upload Build Artifacts
+        uses: actions/upload-artifact@main
         with:
           name: BillingApp-Windows
           path: dist/
